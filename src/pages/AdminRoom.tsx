@@ -48,8 +48,13 @@ export function AdminRoom() {
 
   async function handleHighlightQuestion(questionId: string) {
     await update(ref(db, `rooms/${roomId}/questions/${questionId}`), {
-        isHighlighted: true,
-      });
+      isHighlighted: true,
+    });
+  }
+  async function handleHighlightOffQuestion(questionId: string) {
+    await update(ref(db, `rooms/${roomId}/questions/${questionId}`), {
+      isHighlighted: false,
+    });
   }
 
   return (
@@ -93,12 +98,21 @@ export function AdminRoom() {
                         alt="Marcar pergunta como respondida"
                       />
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighlightQuestion(question.id)}
-                    >
-                      <img src={answerImg} alt="Dar destaque à pergunta" />
-                    </button>
+                    {!question.isHighlighted ? (
+                      <button
+                        type="button"
+                        onClick={() => handleHighlightQuestion(question.id)}
+                      >
+                        <img src={answerImg} alt="Dar destaque à pergunta" />
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleHighlightOffQuestion(question.id)}
+                      >
+                        <img src={answerImg} alt="Dar destaque à pergunta" />
+                      </button>
+                    )}
                   </>
                 )}
                 <button
