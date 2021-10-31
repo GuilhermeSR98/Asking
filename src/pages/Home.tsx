@@ -53,7 +53,7 @@ export function Home() {
       <aside>
         <img src={illustrationImg} alt="Illustration" />
         <strong>Crie Salas de Q &amp; A ao-vivo</strong>
-        <p>Tire as duvidas de sua audiencia em tmepo real</p>
+        <p>Tire as duvidas de sua audiencia em tempo real</p>
       </aside>
       <main>
         <div className="main-content">
@@ -65,7 +65,7 @@ export function Home() {
           <div className="separator">Ou entre em uma sala</div>
           <form onSubmit={handleJoinRoom}>
             <input
-              placeholder="Digite o codigo da sala"
+              placeholder="Digite o código da sala"
               type="text"
               onChange={(event) => setRoomCode(event.target.value)}
               value={roomCode}
